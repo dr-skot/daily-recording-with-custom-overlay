@@ -6,6 +6,19 @@ import React, {
   useState,
 } from 'react';
 
+const layout = {
+  preset: 'custom',
+  composition_id: 'daily:baseline',
+  session_assets: {
+    'components/CustomOverlay.js':
+      'https://parsefiles.back4app.com/IEX22eH4PsczVd7TMS1Y1ZupkCrJURTLHwMcb0dA/59f7701ec5b9ca5cd5793e691e3deed8_CustomOverlay.js',
+  },
+  composition_params: {
+    enableAutoOpeningSlate: true,
+    'openingSlate.title': 'Custom Overlay Test',
+  },
+};
+
 import { useCallState } from '@custom/shared/contexts/CallProvider';
 import { useParticipants } from '@custom/shared/contexts/ParticipantsProvider';
 import { useUIState } from '@custom/shared/contexts/UIStateProvider';
@@ -132,8 +145,10 @@ export const RecordingProvider = ({ children }) => {
     // Small timeout, in case other participants are already in-call.
     const timeout = setTimeout(() => {
       const isSomebodyRecording = participants.some((p) => p.isRecording);
+
       if (!isSomebodyRecording) {
-        callObject.startRecording();
+        console.log('using layout', layout);
+        callObject.startRecording({ layout });
         setIsRecordingLocally(true);
         setHasRecordingStarted(true);
       } else {
@@ -235,7 +250,8 @@ export const RecordingProvider = ({ children }) => {
 
   const startRecording = useCallback(() => {
     if (!callObject || !isRecordingLocally) return;
-    callObject.startRecording();
+    console.log('using layout', layout)
+    callObject.startRecording({ layout});
   }, [callObject, isRecordingLocally]);
 
   useEffect(() => {
@@ -335,3 +351,6 @@ RecordingProvider.propTypes = {
 };
 
 export const useRecording = () => useContext(RecordingContext);
+
+
+
