@@ -10,12 +10,12 @@ const layout = {
   preset: 'custom',
   composition_id: 'daily:baseline',
   session_assets: {
-    'components/CustomOverlay.js':
+    'index.jsx':
       'https://parsefiles.back4app.com/IEX22eH4PsczVd7TMS1Y1ZupkCrJURTLHwMcb0dA/59f7701ec5b9ca5cd5793e691e3deed8_CustomOverlay.js',
   },
   composition_params: {
     enableAutoOpeningSlate: true,
-    'openingSlate.title': 'Custom Overlay Test',
+    'openingSlate.title': 'Swap index.jsx Test',
   },
 };
 
@@ -351,6 +351,3 @@ RecordingProvider.propTypes = {
 };
 
 export const useRecording = () => useContext(RecordingContext);
-
-
-
