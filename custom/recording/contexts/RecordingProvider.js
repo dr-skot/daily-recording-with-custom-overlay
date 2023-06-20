@@ -147,7 +147,6 @@ export const RecordingProvider = ({ children }) => {
       const isSomebodyRecording = participants.some((p) => p.isRecording);
 
       if (!isSomebodyRecording) {
-        console.log('using layout', layout);
         callObject.startRecording({ layout });
         setIsRecordingLocally(true);
         setHasRecordingStarted(true);
@@ -250,8 +249,7 @@ export const RecordingProvider = ({ children }) => {
 
   const startRecording = useCallback(() => {
     if (!callObject || !isRecordingLocally) return;
-    console.log('using layout', layout)
-    callObject.startRecording({ layout});
+    callObject.startRecording({ layout });
   }, [callObject, isRecordingLocally]);
 
   useEffect(() => {

@@ -33,6 +33,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# intellij idea
-.idea/
